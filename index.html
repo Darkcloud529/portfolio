@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- META -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+	<link rel="stylesheet" href="css/vegas.css">
+    <link rel="stylesheet" href="css/reset2.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!--JS-->
+    <script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/vegas.js"></script>
+    <!-- <script src="js/script.js"></script> -->
+
+    <title>front</title>
+  </head>
+  <body>
+    <!-- Header -->
+<div class="header-wrapper">
+	<div class="header-contents">
+		<!-- <h1 class="title">LOGO</h1> -->
+		<nav class="nav-bar">
+			<ul>
+				<li><a href="#about">About</a></li>
+				<li><a href="#portfolio">Portfolio</a></li>
+				<li><a href="#skills">Skills</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+     
+<!-- div:slider  슬라이더 -->
+<div class="slider">
+ <div class="slider-bg"></div>	
+ <div class="slider-content">
+ 	<h1 class="copy">
+ 		<span>Welcome</span>
+ 		<span>이상민의 Portfolio</span>
+ 	</h1>
+ 	<a href="#about" class="btn">More</a>
+ </div>	
+</div>
+
+<!-- Main -->
+<div class="main-wrapper">
+
+ <!-- section-1 : 자기소개 -->
+ <section class="section1" id="about">
+ 	<div class="section-content">
+ 	 <div class="left">
+		<h3>About</h3>   
+        <h2>안녕하세요</h2>
+ 		<h2>개발자를 꿈꾸는 이상민입니다!</h2>
+		 <hr>
+		<p><strong>이력</strong><br>
+		   2021.07.20 ~ TIS 정보기술교육센터<br>
+		   2019.04.01 ~ 2021.06.30 광교어린이천문대 <br>
+		   2017.09.01 ~ 2019.04.01 한국천문연구원 <br>
+		   2011.03.02 ~ 2017.02.22 충북대학교 천문우주학과 졸업<br>
+		</p> 
+ 	 </div>
+ 	 <div class="right">
+		<img src="img/my_profile.jpeg" alt="">
+ 	 </div>
+ 	</div>
+</section>
+      
+ <!-- section-2 : 포트폴리오 -->
+ <section class="section2" id="portfolio">
+ 	<div class="section-content">
+ 	 <h2>Portfolio</h2>	
+ 	 <ul class="imgbox">
+ 	 	<li>
+ 	 	  <a href="https://darkcloud529.github.io/ediya_demo/"><img src="img/ediya.png" alt=""></a>
+ 	 	  <h4>이디야 데모 사이트</h4>
+		  <p>HTML, CSS, Javascript를 활용한 반응형 웹페이지</p>
+ 	 	</li>
+ 	 	<li>
+ 	 	  <a href="https://github.com/Darkcloud529/Java"><img src="img/java.png" alt=""></a>
+ 	 	  <h4>학사 관리 프로그램</h4>
+	      <p>Java, Oracle를 활용한 프로그램</p>	
+ 	 	</li>
+ 	 	<li>
+ 	 	  <a href="https://github.com/Darkcloud529/Spring"><img src="img/spring_board.png" alt=""></a>
+ 	 	  <h4>게시판</h4>
+	      <p>Spring, Oracle, Tomcat를 활용한 게시판</p>	
+ 	 	</li>
+ 	 </ul>
+ 	</div>
+ </section>
+
+ <!-- section-3 : 보유 기술 역량 -->
+ <section class="section3" id="skills">
+ 	<div class="section-content">
+ 		<h2>SKills</h2>
+ 		<div class="skillbox">
+ 		 <ul class="left">
+ 		  <li>HTML5/css</li>	
+ 		  <li><span class="score html"></span></li>
+ 		  <li>javascript/jQuery</li>	
+ 		  <li><span class="score jq"></span></li>
+ 		 </ul>
+ 		 <ul class="right">
+ 		  <li>java</li>	
+ 		  <li><span class="score java"></span></li>
+ 		  <li>spring</li>	
+ 		  <li><span class="score sp"></span></li>
+ 		 </ul>	
+ 		</div>
+ 	</div>
+ </section>
+ 
+</div>
+
+<!-- footer-->
+<div class="footer-wrapper">
+	<p>Copyright 2021 webdi All Right Reserved.</p>
+	<!-- copyright 저작권, 판권 / all right reserved 무단 전제와 복제를 금함 -->
+</div>  
+
+<!-- script -->
+<script>
+	$(".slider .slider-bg").vegas({
+		delay: 5000,
+		/* overlay: './overlay/01.png', */
+		slides: 
+		[
+			{ video: {
+					src: ['./videos/Night_Sky.mp4'],
+					loop: true,
+					mute: true
+				}
+			},
+        	{ video: {
+					src: ['./videos/Cave.mp4'],
+					loop: true,
+					mute: true
+				}
+			}
+		]
+	});
+
+	$(window).scroll(function(){
+		let st = $(window).scrollTop();
+		console.log(st);
+		let boxHeight = $('.header-contents').outerHeight();
+
+		if(st > boxHeight) {
+			$('.header-wrapper').addClass('active');
+		} else {
+			$('.header-wrapper').removeClass('active');
+		}
+
+		$('.main-wrapper>section').each(function(idx, object){
+			if (st > $(this).offset().top - 400 ) {
+				$(this).addClass('active');
+			} else {
+				$(this).removeClass('active');
+			}
+		});
+	});
+</script>
+ 
+  </body>
+</html>
